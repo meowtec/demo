@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style type="text/css">
+    .nav{
+      margin: 10px 0;
+      font-size: 12px;
+      font-family: "Helvetica", "Arial", sans-serif;
+    }
+    .nav a{
+      text-decoration: none;
+      color: #000;
+    }
+    .nav span{
+      color: #999;
+    }
+    .nav .item{
+      display: inline-block;
+      padding: 3px 8px;
+      margin: 0 3px;
+    }
+    .nav a.number:hover{
+      background: #99dddd;
+      color: #ffffff;
+    }
+    .nav span.current{
+      background: #9cc;
+      color: #fff;
+    }
+    .nav a.prev:hover, .nav a.next:hover{
+      color: #9cc;
+    }
+    h2{
+      margin-top: 2em;
+    }
+  </style>
+</head>
+<body>
+<h3>基本</h3>
+<div id="c-0-0" class="nav"></div>
+<div id="c-0-1" class="nav"></div>
+<div id="c-0-2" class="nav"></div>
+<div id="c-0-3" class="nav"></div>
+<div id="c-0-4" class="nav"></div>
+<div id="c-0-5" class="nav"></div>
+<div id="c-0-6" class="nav"></div>
+<div id="c-0-7" class="nav"></div>
+
+<h3>设置</h3>
+<div id="c-1" class="nav"></div>
+<h3>自定义 helper</h3>
+<div id="c-2" class="nav"></div>
+
+<script type="text/javascript" src="pagenavigator.js"></script>
+<script type="text/javascript">
+  var $ = function(s){
+    return document.getElementById(s)
+  }
+  var nav = new PageNavigator({
+    size: 7
+  })
+  $('c-0-0').innerHTML = nav.create(1, 10)
+  $('c-0-1').innerHTML = nav.create(2, 10)
+  $('c-0-2').innerHTML = nav.create(3, 10)
+  $('c-0-3').innerHTML = nav.create(4, 10)
+  $('c-0-4').innerHTML = nav.create(5, 10)
+  $('c-0-5').innerHTML = nav.create(6, 10)
+  $('c-0-6').innerHTML = nav.create(7, 10)
+  $('c-0-7').innerHTML = nav.create(7, 100)
+
+  var nav2 = PageNavigator({
+    linkHelper: 'list.html?page={{page}}&from={{current}}&max={{max}}',
+    prevText: '←',
+    nextText: '→',
+    moreText: '……',
+    size: 9,
+    numberHelper: '<a href="{{link}}" class="item number ui-nav" data-page="{{page}}">{{page}}</a>'
+  })
+  $('c-1').innerHTML = nav2.create(4, 14)
+
+  var nav3 = new PageNavigator({
+    numberHelper: '<button href="{{link}}" class="item number" data-page="{{page}}">{{page}}</button>',
+    currentHelper: '<button class="item number current" data-page="{{page}}" disabled="disabled">{{page}}</button>'
+  })
+  $('c-2').innerHTML = nav3.create(10, 20)
+</script>
+
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="dist/scape.js"></script>
+  <link href="dist/scape.css" rel="stylesheet">
+  <style>
+    .con{
+      width: 200px;height: 50px;
+      margin: 20px 0;
+    }
+    .con.ver{
+      height: 200px;
+    }
+    .code-block{
+      display: block;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .code-block pre{
+      padding: 10px;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+<code class="code-block"><pre>
+new ScapeRange({
+  target: target,
+  min: 2,
+  max: 10,
+  value: 5
+})
+</pre></code>
+<div id="default-left" class="con"></div>
+<script type="text/javascript">
+var target = document.getElementById('default-left')
+leftRange = new ScapeRange({
+  target: target,
+  min: 2,
+  max: 10,
+  value: 5
+})
+</script>
+
+
+<code class="code-block"><pre>
+new ScapeRange({
+  target: target,
+  from: 'top'
+})
+</pre></code>
+<div id="default-top" class="con ver"></div>
+<script type="text/javascript">
+var target = document.getElementById('default-top')
+new ScapeRange({
+  target: target,
+  from: 'top'
+})
+</script>
+
+
+<code class="code-block"><pre>
+new ScapeRange({
+  target: target,
+  from: 'right',
+  value: 0.1
+})
+</pre></code>
+<div id="default-right" class="con"></div>
+<script type="text/javascript">
+var target = document.getElementById('default-right')
+new ScapeRange({
+  target: target,
+  from: 'right',
+  value: 0.1
+})
+</script>
+
+
+<code class="code-block"><pre>
+new ScapeRange({
+  target: target,
+  from: 'bottom'
+})
+</pre></code>
+<div id="default-bottom" class="con ver"></div>
+<script type="text/javascript">
+var target = document.getElementById('default-bottom')
+new ScapeRange({
+  target: target,
+  from: 'bottom'
+})
+</script>
+
+
+<code class="code-block"><pre>
+new ScapeRange({
+  target: target,
+  theme: 'meteor'
+})
+</pre></code>
+<div id="meteor-left" class="con"></div>
+<script type="text/javascript">
+var target = document.getElementById('meteor-left')
+new ScapeRange({
+  target: target,
+  theme: 'meteor'
+})
+</script>
+
+
+<code class="code-block"><pre>
+new ScapeRange({
+  target: target,
+  theme: 'minimal'
+})
+</pre></code>
+<div id="minimal-left" class="con"></div>
+<script type="text/javascript">
+var target = document.getElementById('minimal-left')
+new ScapeRange({
+  target: target,
+  theme: 'minimal'
+})
+</script>
+
+
+<code class="code-block"><pre>
+var target = document.getElementById('minimal-left-2')
+var input = document.getElementById('minimal-left-2-input')
+var text = document.getElementById('minimal-left-2-text')
+var scape = new ScapeRange({
+  target: target,
+  theme: 'minimal',
+  min: 10,
+  max: 100,
+  targetInput: input, // 绑定的 input
+  value: 20 // 初始值 20
+})
+scape.on('change', function (){
+  text.innerHTML = this.val()
+})
+scape.trigger('change');
+setTimeout(function() {
+  scape.val(30).trigger('change') // val(value) 不会触发 change，如果需要触发，请 trigger('change')
+}, 1000)
+</pre></code>
+<div id="minimal-left-2" class="con"></div>
+<input id="minimal-left-2-input" type="text">
+现在的值是：<span id="minimal-left-2-text"></span>
+<script type="text/javascript">
+(function(){
+  var target = document.getElementById('minimal-left-2')
+  var input = document.getElementById('minimal-left-2-input')
+  var text = document.getElementById('minimal-left-2-text')
+  var scape = new ScapeRange({
+    target: target,
+    theme: 'minimal',
+    min: 10,
+    max: 100,
+    targetInput: input, // 绑定的 <input>
+    value: 20 // 初始值 20
+  })
+  scape.on('change', function (){
+    text.innerHTML = this.val()
+  })
+  scape.trigger('change');
+  setTimeout(function() {
+    scape.val(30).trigger('change') // val(value) 不会触发 change，如果需要触发，请 trigger('change')
+  }, 1000)
+})()
+</script>
+</body>
+</html>
