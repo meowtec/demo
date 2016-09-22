@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>谷歌地图 Map 可访问性测试</title>
+<style>
+html, body, #map {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.loading {
+  text-align: center;
+  padding-top: 30px;
+  color: #777;
+  font-size: 24px;
+}
+</style>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOLhm0AFdvVgYYPF1RNiIiOP5Zz6PK-mE"></script>
+</head>
+<body>
+<div id="map">
+  <div class="loading">地图加载中...</div>
+</div>
+<script>
+var map = new google.maps.Map(document.getElementById('map'), {
+  center: {lat: -34.397, lng: 150.644},
+  zoom: 8
+});
+</script>
+</body>
+</html>
